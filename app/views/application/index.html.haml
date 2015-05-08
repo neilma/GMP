@@ -1,0 +1,9 @@
+= render "breaking_bad"
+-#.cgu-logo
+-#  =link_to image_tag("logo-header.svg"), "/"
+.cgu-main
+  .cgu-policy-form
+    = render "policy_query_form"
+  .cgu-data-table
+= render( layout: "shared/modal_form", locals: { title: "Login", button_text: "Login", form_id: "login_form" }) do
+  - render "devise/sessions/login_form"

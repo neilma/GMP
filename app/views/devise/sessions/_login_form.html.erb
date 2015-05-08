@@ -1,0 +1,13 @@
+<h2>Log in</h2>
+
+<%= simple_form_for(:user, url: user_session_path, remote: true, html: { id: "user_auth" }) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :username, label: "Username:", required: true, autofocus: true %>
+    <%= f.input :password, label: "Password:", required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
+  </div>
+  <p id="auth_alert_msg"></p>
+<% end %>

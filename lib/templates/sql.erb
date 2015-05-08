@@ -1,0 +1,22 @@
+SELECT P.PLCY_SMBL, P.PLCY_NO, P.PLCY_MODL_NO, R.MAJR_PERL_CD, R.UNIT_NO, R.UNIT_SEQ_NO, P.TS_PLCY_STRT, P.TS_PLCY_END, P.ISSUE_STATE, P.AGNCY_NO , A.AGNCY_PRFT_CNTR, A.AGNCY_BRANCH, R.TYPE_BUREAU, A.IAG_DSTRBTN_CHNL, R.RISK_STRT_DT, R.RISK_EXPRY_DT
+FROM PMSSDBA.PMS_TPLCY P, PMSSDBA.PMS_TRISK_ITEM R, PMSSDBA.PMS_TAGNCY A
+WHERE P.PLCY_SMBL = R.PLCY_SMBL
+AND P.PLCY_NO = R.PLCY_NO
+AND P.PLCY_MODL_NO = R.PLCY_MODL_NO
+AND P.AGNCY_NO = A.AGNCY_NO
+AND A.IMAGE_TO_DT = '9999-12-31'
+AND P.IMAGE_TO_DT = '9999-12-31'
+AND R.IMAGE_TO_DT = '9999-12-31'
+AND (P.PLCY_SMBL, P.PLCY_NO, P.PLCY_MODL_NO) in
+(
+SELECT DISTINCT P.PLCY_SMBL, P.PLCY_NO, P.PLCY_MODL_NO
+FROM PMSSDBA.PMS_TPLCY P
+WHERE P.DS_PLCY_STATUS = '<%= @policy_status %>'
+<% if @policy_symbol.present? %>AND P.PLCY_SMBL = '<%= @policy_symbol %>'<% end %>
+<% if @module_number.present? %>AND P.PLCY_MODL_NO = '<%= @module_number%>'<% end %>
+<% if @agency_number.present? %>AND P.AGNCY_NO = '<%= @agency_number%>'<% end %>
+<% if @policy_number.present? %>AND P.PLCY_NO = '<%= @policy_number%>'<% end %>
+<% if @profit_centre.present? %>AND P.AGNCY_PRFT_CNTR = '<%= @profit_centre%>'<% end %>
+<% if @issue_state.present? %>AND P.ISSUE_STATE = '<%= @issue_state%>'<% end %>
+FETCH FIRST <%= @limit %> ROWS ONLY
+)

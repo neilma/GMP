@@ -1,0 +1,15 @@
+.cgu-form-fields
+  = simple_form_for :policy_query, url: url_for(action: 'create', controller: 'policy_query'), remote: true do |f|
+    = f.input :policy_status, label: "Policy Status:", collection: PolicyStatus.pluck(:status), selected: PolicyStatus.pluck(:status).first
+    = f.input :policy_symbol, label: "Policy Symbol:", collection: PolicySymbol.pluck(:code), required: false
+    = f.input :module_number, label: "Module NO.:", collection: (0..99).map{|i| sprintf('%02d', i)}, required: false
+    = f.input :profit_centre, label: "Profit Centre:", collection: (0..99).map{|i| sprintf('%02d', i)}, required: false
+    = f.input :agency_branch, label: "Branch Number:", collection: (0..99).map{|i| sprintf('%02d', i)}, required: false
+    = f.input :agency_number, label: "Agency NO.:", placeholder: "e.g. (0000000..9999999)", required: false
+    = f.input :policy_number, label: "Policy NO.:", placeholder: "e.g. (0000000..9999999)", required: false
+    = f.input :distribution_channel, label: "Distribution Channel:", placeholder: "e.g. (0000..9999)", required: false
+    = f.input :major_peril, label: "Major Peril:", placeholder: "e.g. 586", required: false
+    = f.input :type_bureau, label: "Type Bureau:", collection: TypeBureau.pluck(:code), required: false
+    = f.input :issue_state, label: "Issue State:", collection: IssueState.pluck(:state_code), required: false
+    = f.input :limit, label: "Number of Policies:", collection: [1, 5, 10, 50], selected: 10
+    = f.submit "Search", data: { disable_with: "Processing...Please wait." }

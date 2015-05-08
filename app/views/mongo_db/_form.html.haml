@@ -1,0 +1,4 @@
+= simple_form_for :mongified_data, url: url_for(action: "upload", controller: "mongo_db"), remote: true do |f|
+    = f.input :data, as: :hidden, input_html: {value: @mongified_data}
+    = f.input :lob, label: "Line of Business:", collection: %w(Motor Business Liability Travel Marine Property) , required: true, selected: "Business", wrapper_html: { style: "display: inline" }
+    = f.submit "Upload to MongoDB", data: { disable_with: "Uploading to MongoDB...Please wait." }

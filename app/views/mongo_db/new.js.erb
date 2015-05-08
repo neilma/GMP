@@ -1,0 +1,12 @@
+<%- form_id = "upload_to_mongo_db" %>
+$("#<%= form_id %>").remove();
+<% form = capture do %>
+  <%= render( layout: "shared/modal_form", locals: { title: "Upload to Mongo DB", button_text: "Upload to Mongo DB", form_id: form_id }) do %>
+    <%- render "mongo_db/form" %>
+  <%- end %>
+<% end %>
+$("body").append("<%= j form %>");
+$("#<%= form_id %>").modal("toggle");
+$(document).ready(function() {
+     window.open("", "Upload to Mongo DB", "width=400,height=200,scrollbars=yes,titlebar=no,toolbar=no,location=no,status=no,menubar=no,resizable=no")
+});

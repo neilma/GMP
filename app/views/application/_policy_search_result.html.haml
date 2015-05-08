@@ -1,0 +1,36 @@
+.policy-search-result-header{id: "policy-search-result-header"}
+  .policy-search-result-tab{id: "pms_db", style: "float: left"}
+    PMS policies
+  .policy-search-result-tab{id: "mongo_db", style: "float: left"}
+    Mongified policies
+- headers = @policy_search_result.flat_map(&:keys).uniq
+.cgu-policy-search-result{ id: "pms-data", style: "box-shadow: 0 0 3px 3px #888; margin-top: 10px;" }
+  %table
+    %thead
+      %tr
+        - headers.each do |key|
+          %th= key
+    %tbody
+      - @policy_search_result.each do |policy|
+        %tr
+          - headers.each do |key|
+            %td= policy[key]
+- headers = @mongified_data.flat_map(&:keys).uniq
+.cgu-policy-search-result{ id: "mongified-data", style: "box-shadow: 0 0 3px 3px #888; margin-top: 10px; display: none" }
+  %table
+    %thead
+      %tr
+        - headers.each do |key|
+          %th= key
+    %tbody
+      - @mongified_data.each do |policy|
+        %tr
+          - headers.each do |key|
+            %td= policy[key]
+.upload-to-mongodb
+  - client = MongoDbClient.new
+  = simple_form_for :mongified_data, url: url_for(action: 'upload', controller: 'mongo_db'), remote: true do |f|
+    = f.input :data, as: :hidden, input_html: {value: @mongified_data.to_json}
+    = f.input :lob, label: "Line of Business:", collection: %w(Motor Business Liability Travel Marine Property) , required: true, selected: "Business", wrapper_html: { style: "display: inline" }
+    = f.input :collection, label: "Collection:", collection: client.collection_names.select { |name| name.include?("polic") }, required: true, selected: "sit_pms_policies", wrapper_html: { style: "display: inline" }
+    = f.submit "Upload to MongoDB", data: { disable_with: "Uploading to MongoDB...Please wait." }

@@ -1,0 +1,10 @@
+<%- form_id = "login_form" %>
+$("#<%= form_id %>").remove();
+<% form = capture do %>
+  <%= render( layout: "shared/modal_form", locals: { title: "Login", button_text: "Login", form_id: form_id }) do %>
+    <%- render "devise/sessions/login_form" %>
+  <%- end %>
+<% end %>
+$("body").append("<%= j form %>");
+$("#<%= form_id %>").modal("toggle");
+$("#<%= form_id %>").modal_success();

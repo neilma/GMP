@@ -1,0 +1,15 @@
+.modal.fade{id: "#{form_id}"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4#modal-label= title
+      .modal-body
+        = yield
+      - unless local_assigns[:hide_footer_buttons]
+        .modal-footer
+          %button.btn.modal-close{"aria-hidden" => "true", "data-dismiss" => "modal"}= t("close")
+  -#:javascript
+  -#  jQuery( function(){
+  //    $(".modal-submit").submitButton();
+  //  });

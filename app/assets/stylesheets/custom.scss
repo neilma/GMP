@@ -1,0 +1,143 @@
+$main_color: #5fab56;
+body {
+//  background: image_url("header-background.png") repeat-x;
+  font-family: helvetica neue, lucida grande, sans-serif;
+}
+.cgu-logo {
+  width: 100%;
+  padding-bottom: 30px;
+  float: left;
+  img {
+    float: right;
+    height: 100px;
+  }
+  h1 {
+    display: inline-block;
+    padding: 10px;
+    color: white;
+  }
+}
+
+.user-login {
+  a {
+    color: white;
+  }
+  font-size: 20px;
+}
+
+.cgu-main {
+  border-radius: 25px;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 0 3px 3px #888;
+  float: left;
+  .cgu-policy-form {
+    border-radius: 25px;
+    padding: 10px;
+    background: $main_color;
+    box-shadow: 0 0 3px 3px #888;
+    font-weight: bold;
+    .cgu-form-fields {
+      font-size: 16px;
+      font-weight: normal;
+      div {
+        padding: 10px;
+        display: inline-block;
+      }
+      label {
+        padding-right: 10px;
+        float: left;
+        color: white;
+      }
+      input[type="submit"] {
+        display: block;
+        margin-top: 10px;
+        margin-left: 20px;
+        background: $main_color;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        border-color: white;
+        cursor: pointer;
+        border-radius: 25px;
+      }
+    }
+  }
+  .cgu-data-table {
+    width: 1000px;
+    float: left;
+    margin-top: 20px;
+  }
+  .policy-search-result-header {
+    float: left;
+    margin-top: 20px;
+    background: white;
+    width: 980px;
+    color: $main_color;
+    display: inline;
+    border-collapse: collapse;
+    .policy-search-result-tab {
+      float: left !important;
+      display: inherit;
+      border: 2px solid $main_color;;
+      border-bottom: none;
+      padding: 8px;
+      cursor: pointer;
+      width: 150px;
+    }
+    .policy-search-result-tab:hover {
+      box-shadow: 0 0 3px 3px $main_color;
+    }
+  }
+  .upload-to-mongodb {
+    float: right;
+    width: auto;
+    color: $main_color;
+    padding-bottom: 5px;
+    label {
+      font-size: 14px;
+      padding-right: 3px;
+    }
+    select {
+      width: 100px;
+    }
+    input[type="submit"] {
+      margin-top: 10px;
+      background: $main_color;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border-color: white;
+      cursor: pointer;
+    }
+  }
+  .cgu-policy-search-result {
+    float: left;
+    background: $main_color;
+    margin: 0px !important;
+    max-width: 1000px;
+    max-height: 500px;
+    overflow: scroll;
+    table {
+      border-collapse: collapse;
+      thead {
+        font-size: small;
+        th {
+          border: solid 1px white;
+          padding: 5px;
+        }
+      }
+      tr:nth-child(even){
+        background-color: white;
+        color: $main_color;
+        td {
+          border: solid 1px $main_color;
+        }
+      }
+      td {
+        padding: 5px;
+        border: solid 1px white;
+      }
+    }
+  }
+}

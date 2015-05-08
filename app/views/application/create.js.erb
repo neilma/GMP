@@ -1,0 +1,15 @@
+<% if error_occurred?(@policy_search_result) %>
+  $(".cgu-data-table").html("<%= j render "error_notice" %>")
+<% else %>
+  $(".cgu-data-table").html("<%= j render "policy_search_result" %>")
+<% end %>
+$(document).ready(function(){
+    $("#mongo_db").click(function(){
+        $("#pms-data").hide();
+        $("#mongified-data").show();
+    });
+    $("#pms_db").click(function(){
+        $("#pms-data").show();
+        $("#mongified-data").hide();
+    });
+});
