@@ -7,12 +7,13 @@ module SimpleOracleJDBC
       end
     ensure
       close_result_set(rs)
+      @sw.close
     end
   end
 
   def db_query(conn, query)
-    sw = conn.create_statement
-    sw.execute_query query
+    @sw = conn.create_statement
+    @sw.execute_query query
   end
 
   def first_row(rs)

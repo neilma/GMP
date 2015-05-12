@@ -4,26 +4,8 @@ class MongoDbController < ApplicationController
 
   respond_to :js, :html
 
-  # def new
-  #   issue_state_code_to_id if params[:policy_query][:issue_state].present?
-  #   bind_instance_vars(params[:policy_query])
-  #   @policy_search_result = search_pms_policies(
-  #       ERB.new(File.read("#{Rails.root}/lib/templates/sql.erb")).result(binding).tap{|i| p i})
-  #   @mongified_data = mongify(@policy_search_result)
-  # end
-  # def popup
-  #   @mongified_data = params[:mongified_data][:data]
-  #
-  #   respond_to do |format|
-  #     format.js { render "mongo_db/new" }
-  #   end
-  # end
-
   def authenticate_user!
     if user_signed_in?
-      # p session.delete('warden.user.user.key')
-      p 11111111111111
-      p current_user
       upload
     else
       popup_login_form

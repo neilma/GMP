@@ -7,6 +7,7 @@ class PolicyQueryController < ApplicationController
 
   def create
     issue_state_code_to_id if params[:policy_query][:issue_state].present?
+    sub_schema
     bind_instance_vars(params[:policy_query])
     @policy_search_result = search_pms_policies(
         ERB.new(File.read("#{Rails.root}/lib/templates/sql_lite.erb")).result(binding).tap{|i| p i})
@@ -30,5 +31,9 @@ class PolicyQueryController < ApplicationController
 
   def issue_state_code_to_id
     params[:policy_query][:issue_state] = IssueState.find_by_state_code(params[:policy_query][:issue_state]).state_id
+  end
+
+  def sub_schema
+    params[:policy_query][:pms_schema] = { "STS1" => "PMS1DBA", "STST" => "PMSSDBA" }[params[:policy_query][:pms_schema]]
   end
 end

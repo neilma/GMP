@@ -12,4 +12,5 @@
     = f.input :type_bureau, label: "Type Bureau:", collection: TypeBureau.pluck(:code), required: false
     = f.input :issue_state, label: "Issue State:", collection: IssueState.pluck(:state_code), required: false
     = f.input :limit, label: "Number of Policies:", collection: [1, 5, 10, 50], selected: 10
+    = f.input :pms_schema, label: "Schema.:", collection: %w(STST STS1), as: :radio_buttons, checked: "STST"
     = f.submit "Search", data: { disable_with: "Processing...Please wait." }

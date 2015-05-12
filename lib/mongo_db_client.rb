@@ -14,7 +14,7 @@ class MongoDbClient
       else
         record_to_update = cursor.next
         dup_rec['coverages'] += record_to_update['coverages']
-        dup_rec['coverages'].uniq!
+        dup_rec['coverages'].uniq! { |i| i['risk_unit'] && i['major_peril'] }
         collection.update({"_id"=>record_to_update['_id']}, dup_rec)
       end
     end

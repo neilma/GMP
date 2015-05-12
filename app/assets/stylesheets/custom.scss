@@ -61,6 +61,15 @@ body {
         cursor: pointer;
         border-radius: 25px;
       }
+      .policy_query_pms_schema {
+        display: inline;
+        .radio {
+          display: inline;
+        }
+        label {
+          float: none;
+        }
+      }
     }
   }
   .cgu-data-table {
