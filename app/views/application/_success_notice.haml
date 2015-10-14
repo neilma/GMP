@@ -1,0 +1,4 @@
+.notice.alert.alert-success{style: "margin-bottom: 0px;"}
+  - if flash[:success].present?
+    = flash[:success]
+    %button.close{"data-dismiss" => "alert"} &times;
