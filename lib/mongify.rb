@@ -33,7 +33,7 @@ module Mongify
 
     def forge_coverage
       self.tap do |i|
-        keys = %w(major_peril risk_unit risk_start_date risk_end_date)# type_bureau) take out for now
+        keys = %w(major_peril risk_unit risk_start_date risk_end_date type_bureau)
         @policy['coverages'] = [@policy.extract!(*keys)]
       end
     end

@@ -4,6 +4,8 @@ module ApplicationHelper
       flash[:error] = "An error occurred: #{input}"
     elsif !input.present?
       flash[:error] = "No policy found with the criteria:#{params[:policy_query]}"
+    else
+      false
     end
   end
 
@@ -22,4 +24,17 @@ module ApplicationHelper
       end
     end
   end
+
+  def bind_instance_vars(hash)
+    hash.each { |key, value| instance_variable_set("@#{key}", value) }
+  end
+
+  def issue_state_code_to_id
+    params[:policy_query][:issue_state] = IssueState.find_by_state_code(params[:policy_query][:issue_state]).state_id
+  end
+
+  def sub_schema
+    params[:policy_query][:pms_schema] = { "STS1" => "PMS1DBA", "STST" => "PMSSDBA" }[params[:policy_query][:pms_schema]]
+  end
+
 end

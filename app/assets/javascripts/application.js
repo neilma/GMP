@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.table2excel.min
 //= require turbolinks
 //= require bootstrap
 //= require_tree .

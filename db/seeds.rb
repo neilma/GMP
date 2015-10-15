@@ -19,5 +19,3 @@ issue_states.each { |key, value| IssueState.find_or_create_by(state_id: key.to_i
 
 type_bureaus = %w(AG AL BB BI BS BU CB CC CG CL CO CP CR CS CV CW EB EC ED EM EN ER FB FG FI FN FR FS GB GL GP GR GS HH HN IC IF IM IT LB LC LI LP LR LS MA MC MD MO MV NB PA PD PL PN TI TK TL TR WC WL WN)
 type_bureaus.each { |type_bureau| TypeBureau.find_or_create_by(code: type_bureau) }
-
-User.create!(username: "cc_username", password: "cc_password")

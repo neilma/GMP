@@ -1,21 +1,26 @@
 class MongoDbClient
-  attr_accessor :client, :db, :config, :collection, :collection_names
-
+  attr_accessor :client, :db, :config, :collection, :collection_names, :record
   def initialize(opts={})
     default_config
+    @collection = db.collection(opts[:collection]) if opts[:collection].present?
   end
 
-  def upsert(record, input_collection=nil)
-    @collection = db.collection(input_collection) if input_collection
-    dup_rec = record.dup
-    collection.find(policy_number: dup_rec['policy_number'], lob: dup_rec['lob'], type_bureau: dup_rec['type_bureau']).tap do |cursor|
+  def destroy(record)
+    @record = record
+    @collection.remove(policy_number: record['policy_number'], lob: record['lob'])
+  end
+
+  def upsert(record)
+    @record = record
+    @record['updated_at'] = Time.now.utc
+    collection.find(policy_number: record['policy_number'], lob: record['lob']).tap do |cursor|
       if cursor.count == 0
-        collection.insert(dup_rec)
+        collection.insert(record)
       else
         record_to_update = cursor.next
-        dup_rec['coverages'] += record_to_update['coverages']
-        dup_rec['coverages'].uniq! { |i| i['risk_unit'] && i['major_peril'] }
-        collection.update({"_id"=>record_to_update['_id']}, dup_rec)
+        @record['coverages'] += record_to_update['coverages']
+        @record['coverages'].uniq! { |i| i['risk_unit'] && i['major_peril'] }
+        collection.update({ "_id" => record_to_update['_id'] }, record)
       end
     end
   end

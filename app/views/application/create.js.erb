@@ -1,5 +1,5 @@
 <% if error_occurred?(@policy_search_result) %>
-  $(".cgu-data-table").html("<%= j render "error_notice" %>")
+  $(".cgu-header").html("<%= j render "error_notice" %>")
 <% else %>
   $(".cgu-data-table").html("<%= j render "policy_search_result" %>")
 <% end %>

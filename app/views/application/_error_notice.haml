@@ -1,2 +1,4 @@
-.notice{style: "color: red; padding: 10px;"}
-  = flash[:error] if flash[:error].present?
+.notice.alert.alert-warning{style: "margin-bottom: 0px;"}
+  - if flash[:error].present?
+    = flash[:error]
+    %button.close{"data-dismiss" => "alert"} &times;

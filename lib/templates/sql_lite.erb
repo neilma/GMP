@@ -14,7 +14,7 @@ AND P.DS_PLCY_STATUS = '<%= @policy_status %>'
 <% if @policy_number.present? %>AND P.PLCY_NO = '<%= @policy_number%>'<% end %>
 <% if @profit_centre.present? %>AND A.AGNCY_PRFT_CNTR = '<%= @profit_centre%>'<% end %>
 <% if @issue_state.present? %>AND P.ISSUE_STATE = '<%= @issue_state%>'<% end %>
-<% if @major_peril.present? %>AND R.MAJR_PERL_CD = '<%= @major_peril%>'<% end %>
+<% if @major_peril.present? %>AND R.MAJR_PERL_CD in (<%= @major_peril.split.map{|i| "'#{i}'"}.join(', ')%>)<% end %>
 <% if @type_bureau.present? %>AND R.TYPE_BUREAU = '<%= @type_bureau%>'<% end %>
 <% if @agency_branch.present? %>AND A.AGNCY_BRANCH = '<%= @agency_branch%>'<% end %>
 <% if @distribution_channel.present? %>AND A.IAG_DSTRBTN_CHNL = '<%= @distribution_channel%>'<% end %>

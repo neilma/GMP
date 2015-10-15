@@ -3,6 +3,10 @@
     PMS policies
   .policy-search-result-tab{id: "mongo_db", style: "float: left"}
     Mongified policies
+  .export-to{style: "float: right"}
+    -#= link_to('Export to Excel', "#", id: "export_link")
+    %button#export_link
+      Export to Excel
 - headers = @policy_search_result.flat_map(&:keys).uniq
 .cgu-policy-search-result{ id: "pms-data", style: "box-shadow: 0 0 3px 3px #888; margin-top: 10px;" }
   %table

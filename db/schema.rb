@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508011321) do
+ActiveRecord::Schema.define(version: 20151012025305) do
 
   create_table "issue_states", force: true do |t|
     t.integer  "state_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150508011321) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "plain_password"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

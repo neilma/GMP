@@ -8,9 +8,11 @@
     = f.input :agency_number, label: "Agency NO.:", placeholder: "e.g. (0000000..9999999)", required: false
     = f.input :policy_number, label: "Policy NO.:", placeholder: "e.g. (0000000..9999999)", required: false
     = f.input :distribution_channel, label: "Distribution Channel:", placeholder: "e.g. (0000..9999)", required: false
-    = f.input :major_peril, label: "Major Peril:", placeholder: "e.g. 586", required: false
+    = f.input :major_peril, label: "Major Peril:", placeholder: "e.g. 586 502 (space-separated)'", required: false
     = f.input :type_bureau, label: "Type Bureau:", collection: TypeBureau.pluck(:code), required: false
     = f.input :issue_state, label: "Issue State:", collection: IssueState.pluck(:state_code), required: false
     = f.input :limit, label: "Number of Policies:", collection: [1, 5, 10, 50], selected: 10
-    = f.input :pms_schema, label: "Schema.:", collection: %w(STST STS1), as: :radio_buttons, checked: "STST"
-    = f.submit "Search", data: { disable_with: "Processing...Please wait." }
+    = f.input :pms_schema, label: "Schema:", collection: %w(STST STS1), as: :radio_buttons, checked: "STST"
+    .form-buttons
+      = f.submit "Search", data: { disable_with: "Processing...Please wait." }
+      = f.button :button, "Reset", type: "reset"

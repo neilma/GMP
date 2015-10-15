@@ -1,23 +1,12 @@
-/
-  Breaking Bad
-
-  A tribute to the best fucking series in the world.
-
-  Just some CSS and SVG. I created the SVG from the original Logo with
-  Photoshop (path) and Illustrator (SVG).
-
-  The original Logo is © by American Movie Classics Company LLC.
-
-
-  2012 by Tim Pietrusky
-  timpietrusky.com
-/ Breaking Bad Logo
 %section#breakingbad
   .user-login.pull-right{style: "color: white"}
+    = image_tag("http://onesource.iag.com.au/_layouts/1033/IAG.OneSource10/images/logo_mobile.png", style: "display: block")
     - if user_signed_in?
       = link_to('Logout', destroy_user_session_path, id: 'logout', method: :delete, remote: true)
     - else
       = link_to('Login', "login" , id: 'login', method: :post, remote: true)
+  %h4{style: "display: inline; color: white; padding-right: 10px; padding-left: 50px; font-weight: bolder"}
+    Claim Centre's
   %span.chemical-element
     Ge
     .desc{:role => "top-left"} 79.904
@@ -49,7 +38,7 @@
     -#    %g
     -#      %path{:d => "M46.088,45.377c-0.833-27.333-22.667-23.667-26.917-23.167s-19.5,2.5-19.167,27.667c0.333,25.167,23,24,22.417,23.833C20.066,73.038,6.05,64.78,10.505,62.127c0.965-0.574,10.617,2.468,11.809,2.718c8.407,1.765,17.338-1.1,17.607-1.885c-0.351,1.02-5.816,8.564-6.917,8.917c11.641-3.732,13.5-13.833,9.25-14.833s-4.75,1-14.583,3.75c-8.896,2.487-18.104-10.349-15.333-13.75C14.527,44.358,46.122,46.48,46.088,45.377z M24.838,22.877c7.75,0.25,6.917,1.583,0.5,3c-6.417,1.417-10.75,0.167-11.417,0.417C12.342,26.887,17.088,22.627,24.838,22.877z M13.672,40.377c0.684-0.214,0.667-9.583,11.5-9.75c9.755-0.15,9.824,9.594,9.417,10.083C34.172,41.211,12.338,40.794,13.672,40.377z", :fill => "#fff"}
   %br/
-  %span.chemical-element{style: "margin-left: 145px;"}
+  %span.chemical-element{style: "margin-left: 45px;"}
     Po
     .desc{:role => "top-left"} 137.33
     .desc{:role => "top-right"} +2

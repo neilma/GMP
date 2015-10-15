@@ -33,13 +33,11 @@ gem 'sdoc', '~> 0.4.0',                              group: :doc
 gem 'bootstrap-sass', '3.3.1.0'
 gem 'tzinfo-data'
 
-group :development, :test do
-  gem 'haml-rails'
-  gem 'simple_form'
-  gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta2'
-  gem 'mongo'
-  gem 'devise'
-end
+gem 'haml-rails'
+gem 'simple_form'
+gem 'activerecord-jdbcsqlite3-adapter'#, '1.3.0.beta2'
+gem 'mongo'
+gem 'devise'
 
 group :test do
   gem 'rspec-rails'
@@ -49,11 +47,12 @@ end
 group :development do
 # Use Capistrano for deployment
   gem 'capistrano-rails'
+  gem 'jruby-pageant'
 end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
 

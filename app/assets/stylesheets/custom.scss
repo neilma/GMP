@@ -19,6 +19,7 @@ body {
 }
 
 .user-login {
+  text-align: center;
   a {
     color: white;
   }
@@ -49,20 +50,33 @@ body {
         float: left;
         color: white;
       }
-      input[type="submit"] {
+      .form-buttons {
         display: block;
-        margin-top: 10px;
-        margin-left: 20px;
-        background: $main_color;
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-        border-color: white;
-        cursor: pointer;
-        border-radius: 25px;
+        input[type="submit"] {
+          margin-right: 10px;
+          background: $main_color;
+          color: white;
+          font-weight: bold;
+          font-size: 16px;
+          border-color: white;
+          cursor: pointer;
+          border-radius: 25px;
+        }
+        button {
+          line-height: 12px;
+          border-width: 2px !important;
+          border: outset;
+          background: $main_color;
+          color: white;
+          font-weight: bold;
+          font-size: 16px;
+          border-color: white;
+          cursor: pointer;
+          border-radius: 25px;
+        }
       }
       .policy_query_pms_schema {
-        display: inline;
+        display: inline-block;
         .radio {
           display: inline;
         }
